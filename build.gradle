@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+    id 'org.spongepowered.plugin' version '0.8.1'
+}
+
+group 'io.pixelinc'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.spongepowered:spongeapi:7.0.0'
+}
