@@ -32,7 +32,7 @@ public class AsyncService {
     // we need to search thru all the records in the table for the player and their actions
     public void lookup(CommandSource caller, final User user) {
         try {
-            PreparedStatement statement = plugin.database.activeConnection.prepareStatement("SELECT * FROM `block_logs` WHERE uuid=?");
+            PreparedStatement statement = plugin.database.activeConnection.prepareStatement("SELECT * FROM `block_logs` WHERE uuid=? ORDER BY id DESC");
             statement.setString(1, user.getUniqueId().toString());
             async(statement, new  LookupCallback() {
                 @Override
@@ -67,7 +67,7 @@ public class AsyncService {
 
     public void lookup(CommandSource caller, Location<World> location) {
         try {
-            PreparedStatement statement = plugin.database.activeConnection.prepareStatement("SELECT * FROM `block_logs` WHERE location=?");
+            PreparedStatement statement = plugin.database.activeConnection.prepareStatement("SELECT * FROM `block_logs` WHERE location=? ORDER BY id DESC");
             statement.setString(1, SerializableLocation.serialize(location));
             async(statement, new  LookupCallback() {
                 @Override
